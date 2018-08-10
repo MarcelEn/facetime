@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Background from '../../components/background/Background';
 import UserTile from '../../components/userTile/UserTile';
+import IncomingCallMessage from '../../components/incomingCallMessage/IncomingCallMessage';
 
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
             />
           ))
         }
+        <IncomingCallMessage />
       </div>
     );
   }
