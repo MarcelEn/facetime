@@ -1,0 +1,20 @@
+.backgroundWrapper,
+.background{
+    position: absolute;
+    z-index: -1;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+}
+
+.backgroundWrapper{
+    background: black;
+}
+
+.background {
+    background-image: url("https://stmed.net/sites/default/files/bubble-wallpapers-25177-8352636.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: brightness(2) blur(50px);
+}
