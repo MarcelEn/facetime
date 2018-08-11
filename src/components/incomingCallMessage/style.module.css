@@ -18,6 +18,7 @@
     width: 400px;
     background-color: rgb(30,30,30);
     overflow: hidden;
+    animation: colorRotation 2s infinite;
 }
 
 .image{
@@ -83,7 +84,27 @@
     top: calc(50% - 50px);
 }
 
+.pillWrapper{
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: slidein 1s;
+}
+
+@keyframes slidein {
+    from { top: 100%; }
+    to   { opacity: 0%; }
+}
+
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 0.8; }
+}
+
+@keyframes colorRotation {
+    0% { box-shadow: 0px 0px 150px #990101 }
+    50%  { box-shadow: 0px 0px 150px #018f99 }
+    100%{ box-shadow: 0px 0px 150px #990101 }
 }

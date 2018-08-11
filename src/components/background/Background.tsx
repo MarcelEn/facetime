@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './style.css';
+import style from './style.module.css';
 
 
 const Background = () => (

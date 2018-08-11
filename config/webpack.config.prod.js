@@ -45,7 +45,7 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
 // This is the production configuration.
@@ -103,7 +103,7 @@ module.exports = {
       '.jsx',
     ],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -150,7 +150,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
@@ -181,9 +181,55 @@ module.exports = {
           // tags. If you use code splitting, however, any async bundles will still
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
-          
+
           {
-            test: /\.css$/,
+            test: /(?<!\.module)\.css$/,
+            loader: ExtractTextPlugin.extract(
+              Object.assign(
+                {
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                    },
+                  },
+                  use: [
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 1,
+                        minimize: true,
+                        sourceMap: true,
+                      },
+                    },
+                    {
+                      loader: require.resolve('postcss-loader'),
+                      options: {
+                        // Necessary for external CSS imports to work
+                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                        ident: 'postcss',
+                        plugins: () => [
+                          require('postcss-flexbugs-fixes'),
+                          autoprefixer({
+                            browsers: [
+                              '>1%',
+                              'last 4 versions',
+                              'Firefox ESR',
+                              'not ie < 9', // React doesn't support IE8 anyway
+                            ],
+                            flexbox: 'no-2009',
+                          }),
+                        ],
+                      },
+                    },
+                  ],
+                },
+                extractTextPluginOptions
+              )
+            ),
+          },
+          {
+            test: /\.module\.css$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -201,7 +247,7 @@ module.exports = {
                         modules: true,
                         minimize: true,
                         sourceMap: true,
-                       },
+                      },
                     },
                     {
                       loader: require.resolve('postcss-loader'),

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Background from '../../components/background/Background';
 import UserTile from '../../components/userTile/UserTile';
 import IncomingCallMessage from '../../components/incomingCallMessage/IncomingCallMessage';
+import PhoneCall from '../../components/phoneCall/PhoneCall';
 
 
 class App extends React.Component {
@@ -10,7 +11,7 @@ class App extends React.Component {
       <div>
         <Background />
         {
-          [1,2,3,4,5,6,7].map((i: number) => (
+          [1, 2, 3, 4, 5, 6, 7].map((i: number) => (
             <UserTile
               id={i}
               name="Nicole"
@@ -19,6 +20,7 @@ class App extends React.Component {
           ))
         }
         <IncomingCallMessage />
+        <PhoneCall />
       </div>
     );
   }

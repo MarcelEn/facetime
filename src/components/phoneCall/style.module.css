@@ -1,0 +1,130 @@
+.phoneCallWrapper{
+    background: black;
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    animation: fadein 1s;
+}
+
+.mainVideo {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    object-fit: contain;
+}
+
+.prevVideo video {
+    max-height: 400px;
+    max-width: 400px;
+}
+
+.prevVideo {
+    position: absolute;
+    overflow: hidden;
+    max-height: 400px;
+    max-width: 400px;
+    bottom: 30px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.closePrev{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+
+.prevVideo:hover video {
+    filter: blur(5px) brightness(0.8);
+}
+
+.prevVideo:hover img {
+    box-shadow: 0px 0px 80px #00eeff;
+    background: #00eeff;
+    top: calc(50% - 50px);
+}
+
+.prevVideo video,
+.closePrev img {
+    transition: 0.3s;
+}
+
+.closePrev img {
+    border-radius: 100%;
+    width: 100px;
+    position: absolute;
+    top: -100px;
+    left: calc(50% - 50px);
+}
+
+.hangup{
+    position: absolute;
+    left: calc(-50% + 80px);
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    z-index: 6;
+    background: linear-gradient(to right, rgba(153,1,1,1) 0%,rgba(125,185,232,0) 100%); 
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.hangup:hover{
+    left: 0px;
+}
+
+.hangup:hover img{
+    left: calc(100% - 300px);
+}
+
+.hangup img {
+    transition: 1.5s;
+    position: absolute;
+    height: 300px;
+    top: calc(50% - 150px);
+    left: 0px;
+}
+
+.pickup{
+    position: absolute;
+    right: calc(-50% + 80px);
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    z-index: 6;
+    background: linear-gradient(to right, rgba(125,185,232,0) 0%,rgba(1,143,153,1) 100%); 
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.pickup:hover{
+    right: 0px;
+}
+
+.pickup:hover img{
+    right: calc(100% - 300px);
+}
+
+.pickup img {
+    transition: 1.5s;
+    position: absolute;
+    height: 300px;
+    top: calc(50% - 150px);
+    right: 0px;
+}
+
+@keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+}
